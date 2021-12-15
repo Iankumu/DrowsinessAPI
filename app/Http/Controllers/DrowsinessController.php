@@ -67,9 +67,7 @@ class DrowsinessController extends Controller
     public function signals()
     {
         $user_id = auth()->guard('api')->user()->id;
-        $signals = Drowsiness::with('user')->where('user_id',$user_id)->get();
-        return response()->json([
-            'data'=>$signals
-        ],Response::HTTP_OK);
+        $signals = Drowsiness::where('user_id',$user_id)->get();
+        return response()->json(['data'=>$signals],Response::HTTP_OK);
     }
 }
